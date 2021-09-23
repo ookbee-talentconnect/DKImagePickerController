@@ -62,6 +62,14 @@ open class DKAssetGroupDetailVC: UIViewController,
         }
 
         imagePickerController.add(observer: self)
+	    
+	    if #available(iOS 15.0, *) {
+            let appearance = UINavigationBarAppearance()
+            appearance.configureWithOpaqueBackground()
+            appearance.backgroundColor = .white
+            navigationController?.navigationBar.standardAppearance = appearance;
+            navigationController?.navigationBar.scrollEdgeAppearance = navigationController?.navigationBar.standardAppearance
+        }
 
 		let layout = imagePickerController.UIDelegate.layoutForImagePickerController(imagePickerController).init()
 		let collectionView = UICollectionView(frame: CGRect.zero, collectionViewLayout: layout)
